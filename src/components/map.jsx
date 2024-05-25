@@ -3,6 +3,9 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
+const icon = L.icon({ iconUrl: "/images/marker-icon.png" });
+
+
 // delete L.Icon.Default.prototype._getIconUrl;
 
 // L.Icon.Default.mergeOptions({
@@ -18,7 +21,7 @@ const MapComponent = ({ latitude, longitude, locationName, styles, height, width
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[latitude, longitude]}>
+      <Marker icon={icon} position={[latitude, longitude]}>
         <Popup>
           {locationName || 'Lokasi Anda'}
         </Popup>
