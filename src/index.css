@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: "Nunito", sans-serif;
+  color: #363636;
+  margin: 0 auto;
+}
+
+#root {
+  @apply w-full md:max-w-[400px] my-0 mx-auto bg-gray-50 h-full flex flex-1 items-start
+}
+
+.nav {
+  @apply w-full md:max-w-[400px] border-t shadow-lg
+}
+
+
+.login-wrapper {
+  @apply bg-login-bg
+}
+
+.form-control {
+  @apply bg-white text-sm appearance-none border border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500
+}
+
+.required {
+  @apply text-red-600
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999999;
+}
+
+
+video {
+  transform: scaleX(-1);
+}
+
+.rs-cam-full .rs-modal-body{
+  @apply mt-0
+}
+.rs-cam-full {
+  @apply fixed top-0 left-0 right-0 bottom-0 
+}
+
+.leaflet-control-attribution.leaflet-control {
+  display: none;
+}
+
+
+.custom-timeline {
+  margin-left: 20px
+}
+
+.custom-timeline .rs-timeline-item-custom-dot .rs-icon {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  color: #999;
+  font-size: 18px;
+  height: 40px;
+  justify-content: center;
+  left: -2px;
+  margin-left: -13px;
+  padding: 8px;
+  position: absolute;
+  top: 0;
+  width: 40px
+}
+
+.custom-timeline .rs-timeline-item-content {
+  margin-left: 24px
+}
