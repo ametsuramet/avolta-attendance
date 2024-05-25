@@ -1,7 +1,7 @@
-import { useContext, type FC, type ReactNode } from 'react';
-import { HomeIcon, ReceiptRefundIcon, UserCircleIcon, WalletIcon } from '@heroicons/react/24/outline';
-import { Link, useLocation } from 'react-router-dom';
 import { LoadingContext } from '@/objects/loading_context';
+import { HomeIcon, ReceiptRefundIcon, UserCircleIcon, WalletIcon } from '@heroicons/react/24/outline';
+import { useContext, type FC, type ReactNode } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Loading from './loading';
 
 
@@ -10,8 +10,8 @@ interface MainLayoutProps {
 }
 
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
-  let { isLoading, setIsLoading } = useContext(LoadingContext);
-  let location = useLocation();
+  const { isLoading } = useContext(LoadingContext);
+  const location = useLocation();
   return (
     <>
       <div className="flex-1 flex flex-col justify-center items-center pb-12">

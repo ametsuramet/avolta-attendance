@@ -1,11 +1,10 @@
-import { FC, useEffect, useState } from "react"
-import { Route, Routes, useParams } from "react-router-dom"
-import Home from "../pages/Home"
-import NotFound from "@/pages/NotFound"
 import LeavePage from "@/pages/Leave"
-import ReimbursementPage from "@/pages/Reimbursement"
+import NotFound from "@/pages/NotFound"
 import ProfilePage from "@/pages/Profile"
-import WebcamPage from "@/components/web_cam"
+import ReimbursementPage from "@/pages/Reimbursement"
+import { FC } from "react"
+import { Route, Routes } from "react-router-dom"
+import Home from "../pages/Home"
 
 
 interface PrivateRoutesProps { }

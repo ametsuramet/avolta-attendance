@@ -1,26 +1,14 @@
-import Webcam from 'react-webcam';
-import { CameraOptions, useFaceDetection } from 'react-use-face-detection';
-import FaceDetection from '@mediapipe/face_detection';
-import { Camera } from '@mediapipe/camera_utils';
-import { CameraIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { WebcamOutput } from '@/objects/webcam';
 import { b64toBlob, customFetch } from '@/utils/helper';
 import { setError } from '@/utils/helper_ui';
-import { addAttendance } from '@/repositories/attendance';
-import moment from 'moment';
-import { AttendanceReq } from '@/model/attendance';
+import { CameraIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import type { FC } from 'react';
-import { WebcamOutput } from '@/objects/webcam';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import Webcam from 'react-webcam';
 
-const width = 400;
-const height = 800;
 const videoConstraints = {
     facingMode: "user"
 };
-
-
-
-
 
 interface WebcamPageProps {
     onCapture: (s: WebcamOutput) => void
@@ -57,7 +45,7 @@ const WebcamPage: FC<WebcamPageProps> = ({
             if (imageSrc) {
                 const blob = b64toBlob(imageSrc.split("data:image/jpeg;base64,")[1], "image/jpg");
                 // const blobUrl = URL.createObjectURL(blob);
-                let formData = new FormData();
+                const formData = new FormData();
 
                 formData.append("file", blob);
                 formData.append("flipped", "1");
@@ -117,7 +105,7 @@ const WebcamPage: FC<WebcamPageProps> = ({
             </div>
             <div className='absolute top-1 left-1 z-50 p-2 rounded-full bg-black bg-opacity-80'>
                 <XMarkIcon className=' w-6 text-white' onClick={() => {
-                    let ref = webcamRef as RefObject<Webcam>
+                    const ref = webcamRef as RefObject<Webcam>
                     ref.current?.stream?.getTracks()
                         .forEach((track) => {
                             // console.log(track)

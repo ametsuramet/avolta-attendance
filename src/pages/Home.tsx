@@ -1,28 +1,21 @@
 import MainLayout from '@/components/main_layout';
-import { Profile } from '@/model/auth';
-import { getProfile } from '@/repositories/auth';
-import { ClockIcon, HomeIcon, ReceiptRefundIcon, UserCircleIcon, WalletIcon } from '@heroicons/react/24/outline';
-import { useContext, useEffect, useState, type FC } from 'react';
-import Avatar from 'rsuite/esm/Avatar';
-import { Flat, Heat, Nested } from '@alptugidin/react-circular-progress-bar'
-import { Button, Modal } from 'rsuite';
+import MapComponent from '@/components/map';
 import WebcamPage from '@/components/web_cam';
+import { Attendance } from '@/model/attendance';
+import { Profile } from '@/model/auth';
+import { LoadingContext } from '@/objects/loading_context';
 import { addAttendance, clockOutAttendance, todayAttendance } from '@/repositories/attendance';
+import { getProfile } from '@/repositories/auth';
+import { numberToDuration } from '@/utils/helper';
+import { setError, successToast } from '@/utils/helper_ui';
+import { ClockIcon } from '@heroicons/react/24/outline';
+import CheckIcon from '@rsuite/icons/legacy/Check';
 import moment from 'moment';
 import 'moment/locale/id';
-import { setError, successToast } from '@/utils/helper_ui';
-import { LoadingContext } from '@/objects/loading_context';
-import { Attendance } from '@/model/attendance';
+import { useContext, useEffect, useState, type FC } from 'react';
 import Moment from 'react-moment';
-import MapComponent from '@/components/map';
-import { CiLock } from 'react-icons/ci';
-import { numberToDuration } from '@/utils/helper';
-import { Timeline } from 'rsuite';
-import CreditCardIcon from '@rsuite/icons/legacy/CreditCard';
-import PlaneIcon from '@rsuite/icons/legacy/Plane';
-import TruckIcon from '@rsuite/icons/legacy/Truck';
-import UserIcon from '@rsuite/icons/legacy/User';
-import CheckIcon from '@rsuite/icons/legacy/Check';
+import { Button, Modal, Timeline } from 'rsuite';
+import Avatar from 'rsuite/esm/Avatar';
 
 
 
@@ -31,7 +24,7 @@ interface HomeProps { }
 const Home: FC<HomeProps> = ({ }) => {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [attendance, setAttendance] = useState<Attendance | null>(null);
-  let { isLoading, setIsLoading } = useContext(LoadingContext);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
   const [showModal, setShowModal] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date()); // State untuk menyimpan waktu saat ini
 

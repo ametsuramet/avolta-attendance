@@ -7,5 +7,5 @@ type ExpandMenuContextType = {
 
 export const ExpandMenuContext = createContext<ExpandMenuContextType>({
     isExpanded: true,
-    setExpanded: (val) => false
+    setExpanded: (val: boolean) => false
   });
